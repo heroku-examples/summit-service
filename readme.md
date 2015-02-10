@@ -8,9 +8,6 @@ Clone the project:
 git clone https://github.com/heroku-examples/summit-service.git
 cd summit-service
 npm install
-
-  Windows:
-
 ```
 
 Inject config (Linux / OSX):
