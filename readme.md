@@ -27,3 +27,6 @@ Start the service locally:
 ```
 npm start
 ```
+
+Check out [the web service](https://summit-web.herokuapp.com/?zip=98122)
+to see it communicating with your service.
