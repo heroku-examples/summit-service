@@ -1,0 +1,16 @@
+{
+  "name": "summit-service",
+  "version": "1.0.0",
+  "description": "Node Summit 2015 Heroku Service example",
+  "main": "service.js",
+  "scripts": {
+    "start": "node service.js"
+  },
+  "author": "Hunter Loftis <hunter@heroku.com>",
+  "license": "ISC",
+  "dependencies": {
+    "jackrabbit": "^3.0.8",
+    "logfmt": "^1.2.0",
+    "weather-js": "^1.0.1"
+  }
+}
