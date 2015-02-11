@@ -17,19 +17,9 @@ var broker = jackrabbit(RABBIT_URL, 1)
   .once('connected', onBroker)
   .once('disconnected', onBrokerLost);
 
-// Callbacks
+// Provide the service
 
-function onBroker() {
-  logger.log({ type: 'info', message: 'connected', service: 'broker' });
-  broker.create(SERVICE, register);
-}
-
-function register() {
-  logger.log({ type: 'info', message: 'registering', service: SERVICE });
-  broker.handle(SERVICE, getWeather);
-}
-
-function getWeather(message, respond) {
+function handle(message, respond) {
   logger.log({ type: 'info', message: 'request', service: SERVICE });
   weather.find({ search: message.zip, degreeType: 'F' }, function onWeather(err, result) {
     var temp = result && result[0] && result[0].current.temperature;
@@ -38,6 +28,18 @@ function getWeather(message, respond) {
     logger.log({ type: 'info', message: 'response', service: SERVICE, response: res });
     respond(res);
   });
+}
+
+// Glue
+
+function onBroker() {
+  logger.log({ type: 'info', message: 'connected', service: 'broker' });
+  broker.create(SERVICE, register);
+}
+
+function register() {
+  logger.log({ type: 'info', message: 'registering', service: SERVICE });
+  broker.handle(SERVICE, handle);
 }
 
 function onBrokerLost() {
