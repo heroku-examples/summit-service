@@ -53,3 +53,9 @@ function handle(message, respond) {
   respond("Your response here");
 }
 ```
+
+The web service uses these messages:
+
+- weather.get (text)
+- quote.get (text)
+- cute.get (image src)
